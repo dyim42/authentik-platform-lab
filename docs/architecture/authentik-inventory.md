@@ -18,11 +18,11 @@ Environment Variables:
 - POSTGRES_PASSWORD
 - POSTGRES_USER
 
-
+restart: unless-stopped
 
 ### Server
 
-Main server is running it's own image:
+Main server is running its own image:
 AUTHENTIK_IMAGE: (defaults to) -ghrc.io/goauthentik/server
 
 Volumes:
@@ -32,6 +32,7 @@ Volumes:
 Environment Variables:
 - AUTHENTIK_POSTGRESQL__HOST
 - AUTHENTIK_POSTGRESQL__PASSWORD
+- AUTHENTIK_POSTGRESQL__NAME
 - AUTHENTIK_POSTGRESQL__USER
 - AUTHENTIK_SECRET_KEY
 
@@ -39,14 +40,16 @@ Ports:
 - HTTP: 9000
 - HTTPS: 9443
 
+restart: unless-stopped
 
 ### Worker
 
-AUTHENTIK_IMAGE: (defaults to) -ghrc.io/goauthentik/server
+AUTHENTIK_IMAGE: (defaults to) -ghcr.io/goauthentik/server
 
 Environment Variables:
 - AUTHENTIK_POSTGRESQL__HOST
 - AUTHENTIK_POSTGRESQL__PASSWORD
+- AUTHENTIK_POSTGRESQL__NAME
 - AUTHENTIK_POSTGRESQL__USER
 - AUTHENTIK_SECRET_KEY
 
@@ -55,3 +58,12 @@ Volumes:
 - /data
 - /certs
 - /templates
+
+User: root
+restart: unless-stopped
+
+## Networking
+
+- All bridged by default by Compose
+- Server is the only one exposing ports (9000/tcp and 9443/tcp)
+- Server and Worker depends on postgresql
