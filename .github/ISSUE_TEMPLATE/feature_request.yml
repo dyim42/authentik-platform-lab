@@ -1,0 +1,49 @@
+name: Feature
+description: New capability to add to the infrastructure
+title: "[FEATURE] "
+labels: ["feature"]
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - terraform
+        - kubernetes
+        - cicd
+        - gitops
+        - reliability
+        - docs
+    validations:
+      required: true
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - P1
+        - P2
+        - P3
+    validations:
+      required: true
+  - type: textarea
+    id: business-context
+    attributes:
+      label: Business context
+      description: Why this feature is needed, what problem it solves
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance criteria
+      description: Bullet list, checkable outcomes
+    validations:
+      required: true
+  - type: textarea
+    id: definition-of-done
+    attributes:
+      label: Definition of done
+      description: What proves this is complete
+    validations:
+      required: true

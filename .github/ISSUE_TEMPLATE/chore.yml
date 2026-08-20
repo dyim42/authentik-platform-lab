@@ -1,0 +1,31 @@
+name: Chore
+description: Maintenance, refactor, or non-functional work
+title: "[CHORE] "
+labels: ["chore"]
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - terraform
+        - kubernetes
+        - cicd
+        - gitops
+        - reliability
+        - docs
+    validations:
+      required: true
+  - type: textarea
+    id: business-context
+    attributes:
+      label: Business context
+      description: What needs cleanup or maintenance, and why
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance criteria
+    validations:
+      required: true

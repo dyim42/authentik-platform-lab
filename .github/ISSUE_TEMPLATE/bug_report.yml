@@ -1,0 +1,49 @@
+name: Bug
+description: Something in the infrastructure is broken or misconfigured
+title: "[BUG] "
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - terraform
+        - kubernetes
+        - cicd
+        - gitops
+        - reliability
+        - docs
+    validations:
+      required: true
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - P1
+        - P2
+        - P3
+    validations:
+      required: true
+  - type: textarea
+    id: business-context
+    attributes:
+      label: Business context
+      description: What is broken, and what is the impact
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance criteria
+      description: Bullet list, checkable outcomes
+    validations:
+      required: true
+  - type: textarea
+    id: definition-of-done
+    attributes:
+      label: Definition of done
+      description: What proves this is actually fixed, tests, logs, screenshots
+    validations:
+      required: true
