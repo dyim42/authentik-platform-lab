@@ -216,3 +216,64 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# ==========================================
+# Terraform & OpenTofu
+# ==========================================
+# Log files
+*.log
+*.hlog
+
+# Local state files and backups
+*.tfstate
+*.tfstate.*
+
+# Crash log files
+crash.log
+crash.*.log
+
+# Exclude all terraform subdirectories (holds providers and modules)
+.terraform/
+
+# Exclude CLI configuration files
+.terraformrc
+terraform.rc
+
+# Exclude variable files containing secrets
+*.tfvars
+*.tfvars.json
+
+# Exclude local backend paths (from the previous custom path example)
+state/
+
+# ==========================================
+# Docker
+# ==========================================
+# Exclude built images or tars if exported locally
+*.tar
+*.tar.gz
+
+# Exclude local Docker daemon files or sockets if mounted
+docker.sock
+
+# Exclude environment files containing local container secrets
+.env
+.env.*
+!.env.example
+
+# ==========================================
+# Kubernetes (kubectl & Local Clusters)
+# ==========================================
+# Exclude local cluster configuration and admin credentials
+.kube/
+kubeconfig
+kubeconfig.*
+*.kubeconfig
+
+# Exclude Minikube or Kind local state directories
+.minikube/
+.kind/
+
+# Exclude Helm local repositories and build artifacts
+.helm/
+*.tgz
